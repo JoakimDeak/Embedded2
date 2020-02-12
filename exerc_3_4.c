@@ -50,6 +50,7 @@ void printFile(){
     while(1){
         fread(&pr, sizeof(Person), 1, fin);
         if(feof(fin) != 0){
+            fclose(fin);
             break;
         } else{
             printf("First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
@@ -77,14 +78,40 @@ void appendFile(Person *inRecord){
 
 int main(){
 
-    Person p1 = {"Joakim", "Deak", "199910064196"};
-    Person p2 = {"Kent", "Deak", "199910064196"};
-    Person p3 = {"Bengt", "Deak", "199910064196"};
-    appendFile(&p1);
-    appendFile(&p2);
-    appendFile(&p3);
+    int choice;
+    do{
+        printf("Welcome, choose one of the following options\n");
+        printf("1. Create a new and delete the old file\n");
+        printf("2. Add a new person to the file\n");
+        printf("3. Search for a person in the file\n");
+        printf("4. Print out everyone in the file\n");
+        printf("5. Exit the program\n");
 
-    printFile();
+        scanf("%d", &choice);
+        fflush(stdin);
+
+        switch(choice){
+            case 1:
+                Person p = {"John", "Doe", "196001011234"};
+                writeNewFile(&p);
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+                break;
+            default:
+
+                break;
+        } while(choice != 5);
+    }
+
 
     return 0;
 }
