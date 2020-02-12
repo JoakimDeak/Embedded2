@@ -75,11 +75,12 @@ void searchByFirstName(char *name){
         } else{
             if(strcmp(pr.firstName, name) == 0 || strcmp(pr.famName, name) == 0) {
                 printf("SAME");
-                printf("SEARCH BY FIRST NAMEFirst Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
+                printf("Searched for Kent: Given record:  "
+                       "First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
             }
         }
     }
-    printf("closing da loop");
+
     fclose(fin);
 
 }
