@@ -116,7 +116,11 @@ int main(){
         switch(choice){
             case 1:{
                 Person p = {"John", "Doe", "196001011234"};
-                writeNewFile(&p);
+                Person pr;
+                strcpy(pr.firstName, "John");
+                strcpy(pr.famName, "Doe");
+                strcpy(pr.pers_number, "196001011234");
+                writeNewFile(&pr);
                 break;
             }
             case 2:{
