@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct{
     char firstName[20];
@@ -60,6 +61,26 @@ void printFile(){
 }
 
 void searchByFirstName(char *name){
+    FILE *fin;
+    Person pr;
+    if((fin = fopen("personDB.bin", "rb")) == NULL){
+        printf("Couldn't open file to read\n");
+        return;
+    }
+    while(1){
+        printf("we are in da loop");
+        fread(&pr, sizeof(Person), 1, fin);
+        if(feof(fin) != 0){
+            break;
+        } else{
+            if(strcmp(pr.firstName, name) == 0 || strcmp(pr.famName, name) == 0) {
+                printf("SAME");
+                printf("SEARCH BY FIRST NAMEFirst Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
+            }
+        }
+    }
+    printf("closing da loop");
+    fclose(fin);
 
 }
 
@@ -80,7 +101,7 @@ int main(){
 
     int choice;
     do{
-        printf("Welcome, choose one of the following options\n");
+        printf("\nWelcome, choose one of the following options\n");
         printf("1. Create a new and delete the old file\n");
         printf("2. Add a new person to the file\n");
         printf("3. Search for a person in the file\n");
@@ -89,29 +110,78 @@ int main(){
 
         scanf("%d", &choice);
         fflush(stdin);
+        while ((getchar()) != '\n');
 
         switch(choice){
-            case 1:
+            case 1:{
                 Person p = {"John", "Doe", "196001011234"};
                 writeNewFile(&p);
                 break;
-            case 2:
+            }
+            case 2:{
+                char firstName[20];
+                char famName[20];
+                char pers_number[13];
 
-                break;
-            case 3:
+                printf("Enter first name\n");
+                fgets(firstName, 20, stdin);
 
-                break;
-            case 4:
+                printf("Enter last name\n");
+                fgets(famName, 20, stdin);
 
-                break;
-            case 5:
-                break;
-            default:
+                printf("Enter personnummer\n");
+                fgets(pers_number, 13, stdin);
 
-                break;
-        } while(choice != 5);
-    }
+                Person pr;
+                strcpy(pr.firstName, firstName);
+                strcpy(pr.famName, famName);
+                strcpy(pr.pers_number, pers_number);
 
+                appendFile(&pr);
+                break;
+            }
+            case 3:{
+                char name[20];
+                printf("Enter name to search for\n");
+                gets(name);
+                searchByFirstName(name);
+                break;
+            }
+            case 4:{
+                printFile();
+                break;
+            }
+            case 5:{
+                break;
+            }
+
+            default:{
+                printf("Enter valid option\n");
+                break;
+            }
+        }
+    } while(choice != 5);
+/*
+    char firstName[20];
+    char famName[20];
+    char pers_number[13];
+
+    printf("Enter first name\n");
+    fgets(firstName, 20, stdin);
+
+    printf("Enter last name\n");
+    fgets(famName, 20, stdin);
+
+    printf("Enter personnummer\n");
+    fgets(pers_number, 13, stdin);
+
+    Person pr;
+    strcpy(pr.firstName, firstName);
+    strcpy(pr.famName, famName);
+    strcpy(pr.pers_number, pers_number);
+
+    appendFile(&pr);
+    printFile();*/
 
     return 0;
 }
