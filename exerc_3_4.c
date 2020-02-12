@@ -66,18 +66,18 @@ void searchByFirstName(char *name){
         return;
     }
     while(1){
-        printf("we are in da loop");
         fread(&pr, sizeof(Person), 1, fin);
         if(feof(fin) != 0){
             break;
         } else{
             if(strcmp(pr.firstName, name) == 0 || strcmp(pr.famName, name) == 0) {
                 printf("SAME");
-                printf("SEARCH BY FIRST NAMEFirst Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
+                printf("Searched for Kent: Given record:  "
+                       "First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
             }
         }
     }
-    printf("closing da loop");
+
     fclose(fin);
 
 }
@@ -106,6 +106,6 @@ int main(){
 
     printFile();
     char name = "Kent";
-    searchByFirstName(&name);
+    searchByFirstName("Kent");
     return 0;
 }
