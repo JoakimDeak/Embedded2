@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-
+#include <string.h>
 typedef struct{
     char firstName[20];
     char famName[20];
@@ -60,16 +60,26 @@ void printFile(){
 
 void searchByFirstName(char *name){
     FILE *fin;
-    Person *pr;
-while(!feof(fin)){
-    if((fread(&pr, sizeof(Person),1,fin)) == -1){
-        printf("Couldnt read from file to search for person \n");
+    Person pr;
+    if((fin = fopen("personDB.bin", "rb")) == NULL){
+        printf("Couldn't open file to read\n");
         return;
     }
-    if (pr->firstName == name || pr ->famName == name){
-
+    while(1){
+        printf("we are in da loop");
+        fread(&pr, sizeof(Person), 1, fin);
+        if(feof(fin) != 0){
+            break;
+        } else{
+            if(strcmp(pr.firstName, name) == 0 || strcmp(pr.famName, name) == 0) {
+                printf("SAME");
+                printf("SEARCH BY FIRST NAMEFirst Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
+            }
+        }
     }
-}
+    printf("closing da loop");
+    fclose(fin);
+
 }
 
 void appendFile(Person *inRecord){
@@ -95,6 +105,7 @@ int main(){
     appendFile(&p3);
 
     printFile();
-
+    char name = "Kent";
+    searchByFirstName(&name);
     return 0;
 }
