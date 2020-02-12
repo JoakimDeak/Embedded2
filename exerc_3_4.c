@@ -36,21 +36,14 @@ void printFile(){
     if((fin = fopen("personDB.bin", "rb")) == NULL){
         printf("Couldn't open file to read\n");
         return;
-    } else{
-        printf("Could open file to read\n");
     }
-    while(1){ // repeat until end of file is reached
-        printf("got in loop\n");
+    while(!feof(fin)){ // repeat until end of file is reached
         if((fread(&pr, sizeof(Person), 1, fin)) == -1){
             printf("Couldn't read from file\n");
             fclose(fin);
             return;
         } else{
             printf("First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
-        }
-        if(feof(fin)){
-            fclose(fin);
-            break;
         }
         //pr++;
     }
@@ -76,8 +69,6 @@ void appendFile(Person *inRecord){
     if((fout = fopen("personDB.bin", "ab")) == NULL){
         printf("Couldn't open file to write\n");
         return;
-    } else{
-        printf("Could open file to write\n");
     }
     if((fwrite(inRecord, sizeof(Person), 1, fout)) == -1){
         printf("Couldn't write to file write\n");
