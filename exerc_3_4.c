@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 typedef struct{
     char firstName[20];
@@ -11,6 +12,21 @@ Person inputRecord(){
 }
 
 void writeNewFile(Person *inRecord){
+    FILE *ptr;
+    if (access ("personDB.bin", F_OK) != -1){
+        //FILE EXISTS
+        remove("personDB.bin");
+        printf("Successfully deleted /n");
+    }
+
+    ptr = fopen("personDB.bin", "wb");
+    if((fwrite(inRecord, sizeof(Person), 1, ptr)) == -1){
+        printf("Couldn't write to file write\n");
+    } else{
+        printf("Successfully wrote to the write\n");
+    }
+    printf("Made file");
+
 
 }
 
@@ -28,7 +44,7 @@ void printFile(){
             printf("Couldn't read from file\n");
             return;
         } else{
-            printf("First Name: %s")
+            printf("First Name: %s");
         }
     }
 }
