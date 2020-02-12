@@ -16,21 +16,29 @@ void writeNewFile(Person *inRecord){
 
 void printFile(){
     FILE *fin;
-    Person *pr;
+    Person pr;
     if((fin = fopen("personDB.bin", "rb")) == NULL){
         printf("Couldn't open file to read\n");
         return;
     } else{
         printf("Could open file to read\n");
     }
-    while(!feof(fin)){ // repeat until end of file is reached
-        if((fread(pr, sizeof(Person), 1, fin)) == -1){
+    while(1){ // repeat until end of file is reached
+        printf("got in loop\n");
+        if((fread(&pr, sizeof(Person), 1, fin)) == -1){
             printf("Couldn't read from file\n");
+            fclose(fin);
             return;
         } else{
-            printf("First Name: %s")
+            printf("First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
         }
+        if(feof(fin)){
+            fclose(fin);
+            break;
+        }
+        //pr++;
     }
+    fclose(fin);
 }
 
 void searchByFirstName(char *name){
@@ -42,20 +50,24 @@ void appendFile(Person *inRecord){
     if((fout = fopen("personDB.bin", "ab")) == NULL){
         printf("Couldn't open file to write\n");
         return;
-    } else{
-        printf("Could open file to write\n");
     }
     if((fwrite(inRecord, sizeof(Person), 1, fout)) == -1){
         printf("Couldn't write to file write\n");
-    } else{
-        printf("Successfully wrote to the write\n");
+        return;
     }
     fclose(fout);
 }
 
 int main(){
 
-    Person p = {"Joakim", "Deak", "199910064196"};
+    Person p1 = {"Joakim", "Deak", "199910064196"};
+    Person p2 = {"Kent", "Deak", "199910064196"};
+    Person p3 = {"Bengt", "Deak", "199910064196"};
+    appendFile(&p1);
+    appendFile(&p2);
+    appendFile(&p3);
+
+    printFile();
 
     return 0;
 }
