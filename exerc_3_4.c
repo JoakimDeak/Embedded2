@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 typedef struct{
     char firstName[20];
@@ -37,7 +38,7 @@ void printFile(){
         printf("Couldn't open file to read\n");
         return;
     }
-    while(!feof(fin)){ // repeat until end of file is reached
+    /*while(!feof(fin)){ // repeat until end of file is reached
         if((fread(&pr, sizeof(Person), 1, fin)) == -1){
             printf("Couldn't read from file\n");
             fclose(fin);
@@ -45,7 +46,14 @@ void printFile(){
         } else{
             printf("First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
         }
-        //pr++;
+    }*/
+    while(1){
+        fread(&pr, sizeof(Person), 1, fin);
+        if(feof(fin) != 0){
+            break;
+        } else{
+            printf("First Name: %s\n Last Name: %s\n Personnummer: %s\n", pr.firstName, pr.famName, pr.pers_number);
+        }
     }
     fclose(fin);
 }
