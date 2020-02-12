@@ -50,7 +50,17 @@ void printFile(){
 }
 
 void searchByFirstName(char *name){
+    FILE *fin;
+    Person *pr;
+while(!feof(fin)){
+    if((fread(&pr, sizeof(Person),1,fin)) == -1){
+        printf("Couldnt read from file to search for person \n");
+        return;
+    }
+    if (pr->firstName == name || pr ->famName == name){
 
+    }
+}
 }
 
 void appendFile(Person *inRecord){
