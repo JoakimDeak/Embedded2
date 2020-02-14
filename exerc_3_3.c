@@ -1,3 +1,14 @@
+/* ====================================
+File name: exerc_2_8.h
+Date: 2020-02-06
+Group nr 19
+Members that contribute to the solutions
+Kent Edström
+Joakim Deak
+Member not present at the demonstration time
+
+Demonstration code: 25769
+====================================== */
 #include <stdio.h>
 #include <stdlib.h>
 #include<time.h>

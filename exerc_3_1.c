@@ -1,3 +1,13 @@
+/* ====================================
+File name: exerc_2_8.h
+Date: 2020-02-06
+Group nr 19
+Members that contribute to the solutions
+Joakim Deak
+Member not present at the demonstration time
+
+Demonstration code: 26682
+====================================== */
 #include <stdio.h>
 
 enum DIRECTION {N,E,S,W};

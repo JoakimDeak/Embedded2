@@ -1,6 +1,15 @@
+/* ====================================
+File name: exerc_2_8.h
+Date: 2020-02-06
+Group nr 19
+Members that contribute to the solutions
+Kent Edström
+Member not present at the demonstration time
+
+Demonstration code: 24925
+====================================== */
 #include <stdio.h>
 #include <string.h>
-
 
 int searchNumber(int n, int array[], int size){
     for (int i = 0; i <size; i++){
