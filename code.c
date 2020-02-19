@@ -1,6 +1,6 @@
 /* ====================================
-File name: exerc_2_3.h
-Date: 2020-02-06
+File name: code.c
+Date: 2020-02-14
 Group nr 19
 Members that contribute to the solutions
 Joakim Deak
