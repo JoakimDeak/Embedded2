@@ -1,9 +1,14 @@
-/* *******************************
-Program file : bit_manage_function.c
-Peter Lundin / 2016-01-97
-For test IO program function 
+/* ====================================
+File name: exerc_4_3.c
+Date: 2020-02-19
+Group nr 19
+Members that contribute to the solutions
+Kent Edström
+Joakim Deak
+Member not present at the demonstration time
 
-******************************** */
+Demonstration code: 22346
+====================================== */
 
 #include <time.h>
 #include <stdio.h>
