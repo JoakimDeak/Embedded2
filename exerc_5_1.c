@@ -47,6 +47,7 @@ void setup(){
     DDRB = 0x0f;
     DDRD = 0x00;
     attachInterrupt(digitalPinToInterrupt(2), readKeyboard , FALLING);
+    pinMode(A0, INPUT);
 }
 
 void setRowLow(int i){
@@ -88,8 +89,6 @@ int checkColumn(){
     }
 }
 
-
-
 void loop()
 {
 
@@ -97,6 +96,9 @@ void loop()
         Serial.println(keyPressed);
         keyPressed = '\u0000';
     }
+
+    float temp = ((analogRead(A0) * (5.0 / 1024)) - 0.5) / 0.01;
+    Serial.println(temp);
 
     setRowLow(0);
     setRowLow(1);
