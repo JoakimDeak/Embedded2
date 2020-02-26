@@ -15,6 +15,8 @@ Demonstration code:
 int column;
 int row;
 
+int timer = 0;
+
 char keyPressed = '\u0000';
 
 char keys[4][4] = {
@@ -92,13 +94,17 @@ int checkColumn(){
 void loop()
 {
 
+    timer++;
+
     if(keyPressed != '\u0000'){
         Serial.println(keyPressed);
         keyPressed = '\u0000';
     }
+    if(timer % 100 == 0){
+        float temp = ((analogRead(A0) * (5.0 / 1024)) - 0.5) / 0.01;
+        Serial.println(temp);
+    }
 
-    float temp = ((analogRead(A0) * (5.0 / 1024)) - 0.5) / 0.01;
-    Serial.println(temp);
 
     setRowLow(0);
     setRowLow(1);
