@@ -7,7 +7,8 @@ Joakim Deak
 Kent Edström
 Member not present at the demonstration time
 
-Demonstration code:
+Demonstration code 5.1: 20905
+Demonstration code 5.2: 27920
 ====================================== */
 #include <avr/io.h>
 #include <util/delay.h>
