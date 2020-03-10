@@ -1,0 +1,8 @@
+1. It creates one thread.
+2. lines 16 & 17 create thead id and thread attributes objects. 
+line 20 initializes the attribute object with default values.
+line 25 creates a thread with the values previously defined and tells it to run the runner function.
+line 26 tells the program to wait for the thread with the given id to finish before continuing with the rest of the program.
+3. One argument is passed to the function runner
+4. In the example the function runner is only accessing global variables and as such they do not need to be passed in as parameters.
+5. When line 26 is not executed the program will start sorting the array before it is completely filled by runner which results in the array not being sorted properly as values were being added at the same time as it was being sorted.
