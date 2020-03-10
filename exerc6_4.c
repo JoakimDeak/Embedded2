@@ -1,3 +1,13 @@
+/* ====================================
+File name: exerc6_4.c
+Date: 2020-03-09
+Group nr 19
+Members that contribute to the solutions
+Joakim Deak
+Kent Edström
+Member not present at the demonstration time
+Demonstration code:
+====================================== */
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>

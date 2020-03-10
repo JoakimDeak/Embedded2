@@ -1,5 +1,5 @@
 /* ====================================
-File name: sortandfind_20.c
+File name: exerc6_2.c
 Date: 2020-03-01
 Group nr 19
 Members that contribute to the solutions
